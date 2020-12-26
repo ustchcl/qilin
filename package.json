@@ -1,0 +1,78 @@
+{
+	"name": "qilin",
+	"displayName": "qilin",
+	"description": "麒麟-大威天龙",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.52.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:qilin.helloWorld",
+		"onCeo"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [{
+				"command": "qilin.helloWorld",
+				"title": "Hello World"
+			},
+			{
+				"command": "qilin.showReminderView",
+				"title": "打开提醒页面",
+				"category": "ycy"
+			}
+		]
+	},
+	"configuration": {
+		"type": "object",
+		"title": "杨超越",
+		"properties": {
+			"ycy.reminderViewIntervalInMinutes": {
+				"type": "number",
+				"default": 60,
+				"description": "展示提醒页面的时间间隔（分钟）"
+			},
+			"ycy.title": {
+				"type": "string",
+				"default": "小哥哥，小哥哥，代码写久了，该休息啦~",
+				"description": "页面内展示文字"
+			},
+			"ycy.type": {
+				"type": "string",
+				"default": "default",
+				"description": "类型：default:默认图；url：网络图"
+			},
+			"ycy.customImages": {
+				"type": "array",
+				"default": [
+					"http://b-ssl.duitang.com/uploads/item/201806/04/20180604090459_gqqjo.jpg"
+				],
+				"description": "用户设置图片地址"
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"lint": "eslint src --ext ts",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.52.0",
+		"@types/glob": "^7.1.3",
+		"@types/mocha": "^8.0.4",
+		"@types/node": "^12.11.7",
+		"eslint": "^7.15.0",
+		"@typescript-eslint/eslint-plugin": "^4.9.0",
+		"@typescript-eslint/parser": "^4.9.0",
+		"glob": "^7.1.6",
+		"mocha": "^8.1.3",
+		"typescript": "^4.1.2",
+		"vscode-test": "^1.4.1"
+	}
+}
