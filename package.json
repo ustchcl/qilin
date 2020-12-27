@@ -1,8 +1,12 @@
 {
 	"name": "qilin",
-	"displayName": "qilin",
-	"description": "麒麟-大威天龙",
+	"displayName": "郭麒麟鼓励师",
+	"repository": "https://github.com/ustchcl/qilin.git",
+	"description": "郭麒麟鼓励师",
 	"version": "0.0.1",
+	"icon": "out/assets/icon.jpg",
+	"author": "ustchcl",
+  "publisher": "ustchcl",
 	"engines": {
 		"vscode": "^1.52.0"
 	},
@@ -10,50 +14,76 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:qilin.helloWorld",
-		"onCeo"
+		"*"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
-		"commands": [{
-				"command": "qilin.helloWorld",
-				"title": "Hello World"
-			},
+		"configuration": {
+			"type": "object",
+			"title": "郭麒麟",
+			"properties": {
+				"qilin.reminderViewIntervalInMinutes": {
+					"type": "number",
+					"default": 60,
+					"description": "展示提醒页面的时间间隔（分钟）"
+				},
+				"qilin.titleType": {
+					"type": "string",
+					"default": "yiyan",
+					"description": "yiyan: 默认使用一言；other：使用页面内展示文字"
+				},
+				"qilin.title": {
+					"type": "string",
+					"default": "小哥哥，小哥哥，代码写久了，该休息啦~",
+					"description": "页面内展示文字"
+				},
+				"qilin.type": {
+					"type": "string",
+					"default": "default",
+					"description": "类型：default: 默认图；url：网络图"
+				},
+				"qilin.customImages": {
+					"type": "array",
+					"default": [
+						"http://b-ssl.duitang.com/uploads/item/201806/04/20180604090459_gqqjo.jpg"
+					],
+					"description": "用户设置图片地址"
+				}
+			}
+		},
+		"commands": [
 			{
 				"command": "qilin.showReminderView",
 				"title": "打开提醒页面",
-				"category": "ycy"
+				"category": "gql"
+			},
+			{
+				"command": "qilin.showReminderView",
+				"title": "出来吧! 我的小可爱!",
+				"icon": {
+						"light": "./images/icon/llama.png",
+						"dark": "./images/icon/llama.png"
+				}
 			}
-		]
+		],
+		"menus": {
+			"editor/context": [
+					{
+							"when": "editorFocus",
+							"command": "qilin.showReminderView",
+							"group": "navigation"
+					}
+			],
+			"editor/title": [
+					{
+							"when": "!explorerResourceIsFolder",
+							"command": "qilin.showReminderView",
+							"group": "navigation"
+					}
+			]
+		}		
 	},
-	"configuration": {
-		"type": "object",
-		"title": "杨超越",
-		"properties": {
-			"ycy.reminderViewIntervalInMinutes": {
-				"type": "number",
-				"default": 60,
-				"description": "展示提醒页面的时间间隔（分钟）"
-			},
-			"ycy.title": {
-				"type": "string",
-				"default": "小哥哥，小哥哥，代码写久了，该休息啦~",
-				"description": "页面内展示文字"
-			},
-			"ycy.type": {
-				"type": "string",
-				"default": "default",
-				"description": "类型：default:默认图；url：网络图"
-			},
-			"ycy.customImages": {
-				"type": "array",
-				"default": [
-					"http://b-ssl.duitang.com/uploads/item/201806/04/20180604090459_gqqjo.jpg"
-				],
-				"description": "用户设置图片地址"
-			}
-		}
-	},
+	
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
 		"compile": "tsc -p ./",

@@ -1,71 +1,22 @@
-# qilin README
+# 郭麒麟鼓励师
 
 1. 基础召唤 [√] 复制超越
-2. 每日一句API
+2. 每日一句API [√]
 3. 底部召唤 [√] 
-4. 定时设置, 图片选择
+4. 定时设置, 图片选择 [√]  复制超越
 
+## 使用方法
 
-This is the README for your extension "qilin". After writing up a brief description, we recommend including the following sections.
+-   召唤鼓励师的几种方式：
+    -   通过右上编辑器导航（:sheep:图标）
+    -   通过点击右下角的状态栏“召唤郭麒麟”
+    -   通过文件右键菜单‘出来吧 我的小可爱’
+    -   F1 进入命令选择，激活命令：出来吧 我的小可爱
 
-## Features
+## 配置
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
-
-## Requirements
-
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
-
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
------------------------------------------------------------------------------------------------------------
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+* `qilin.reminderViewIntervalInMinutes`: 展示提醒页面的时间间隔（分钟）。(默认值为**60**)
+* `qilin.titleType`: yiyan: 默认使用一言；other：使用页面内展示文字
+* `qilin.title`: 提示文字。 (默认值为**小哥哥，小哥哥，代码写久了，该休息啦~**)
+* `qilin.type`: default (默认图)；url (图片地址)。(默认值为**default**)
+* `qilin.customImages`: 配置图片数组（需要搭配ycy.type为url） (默认值为**默认图片**)

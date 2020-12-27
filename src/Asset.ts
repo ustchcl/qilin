@@ -67,4 +67,8 @@ export default class Asset {
     public getTitle(): string {
         return Utility.getConfiguration().get<string>('title', '');
     }
+
+    public getTitleType() : "yiyan" | "other" {
+        return Utility.getConfiguration().get<string>('titleType', 'yiyan') === "yiyan" ? "yiyan" : "other";
+    }
 }

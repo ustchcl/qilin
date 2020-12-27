@@ -5,9 +5,8 @@ import { ReminderView } from './ReminderView'
 import {Scheduler} from './Scheduler'
 import { initStatusBar } from "./StatusBar"
 
-initStatusBar();
-
 export function activate(context: vscode.ExtensionContext) {
+    initStatusBar();
 	const scheduler = new Scheduler(context);
     scheduler.start();
     context.subscriptions.push(vscode.commands.registerCommand('qilin.showReminderView', () => {
