@@ -9,24 +9,28 @@ export class ReminderView {
         const asset: Asset = new Asset(context);
         const imagePath = asset.getImageUri();
         const titleType = asset.getTitleType();
+        const panelTitle = asset.getPanelTitle()
         if (titleType === "yiyan") {
-            this.showPanel(imagePath, "")
-            const resp = await network.mkRequest(["GET", "https://international.v1.hitokoto.cn"])
+            this.showPanel(imagePath, panelTitle, "")
+            const resp = await network.mkRequest(["GET", "https://international.v1.hitokoto.cn?c=i&c=k"])
             const info: any = JSON.parse(resp.content)
-            this.showPanel(imagePath, info.hitokoto)
+            this.showPanel(imagePath, panelTitle, `
+                <div><h1>${info.hitokoto ?? ""} </h1></div>
+                <div><h3>◉　${info.from_who ?? "佚名"}  《${info.from}》</h3></div>
+            `)
         } else {
             const title = asset.getTitle();
-            this.showPanel(imagePath, title)
+            this.showPanel(imagePath, panelTitle, `<div><h1>${title}</h1></div>`)
         }
         
     }
 
-    private static showPanel(imagePath: string | vscode.Uri, title: string) {
+    private static showPanel(imagePath: string | vscode.Uri, panelTitle: string, title: string) {
         if (this.panel) {
             this.panel.webview.html = this.generateHtml(imagePath, title);
             this.panel.reveal();
         } else {
-            this.panel = vscode.window.createWebviewPanel("qilin", "郭麒麟", vscode.ViewColumn.Two, {
+            this.panel = vscode.window.createWebviewPanel("qilin", panelTitle, vscode.ViewColumn.Two, {
                 enableScripts: true,
                 retainContextWhenHidden: true,
             });
@@ -43,11 +47,11 @@ export class ReminderView {
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>杨超越</title>
+            <title>大林子</title>
         </head>
         <body>
-            <div><h1>${title}</h1></div>
-            <div><img src="${imagePath}"></div>
+            ${title}
+            <div><img src="${imagePath}" style="max-height: 600px;"></div>
         </body>
         </html>`;
 

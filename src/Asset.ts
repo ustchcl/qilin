@@ -71,4 +71,8 @@ export default class Asset {
     public getTitleType() : "yiyan" | "other" {
         return Utility.getConfiguration().get<string>('titleType', 'yiyan') === "yiyan" ? "yiyan" : "other";
     }
+
+    public getPanelTitle(): string {
+        return Utility.getConfiguration().get<string>('panelTitle', '大林子')
+    }
 }
